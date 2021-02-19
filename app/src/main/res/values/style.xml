@@ -1,0 +1,28 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.style" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+
+        <!--    <item name="colorPrimary">#a1d6e4</item> -->
+          <item name="colorPrimaryDark">#d9f8fa</item>
+        <!--    <item name="colorAccent">#a1d6e4</item> -->
+
+          <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+
+          <item name="android:windowTranslucentStatus">true</item>
+      </style>
+
+      <style name="tab_text" parent="@android:style/TextAppearance.Widget.TabWidget">
+          <item name="android:fontFamily">@font/dream4</item>
+          <item name="android:textSize">15dp</item>
+      </style>
+
+      <style name="item_text" parent="android:Widget.TextView">
+          <item name="android:fontFamily">@font/dream4</item>
+      </style>
+
+    <style name="MyDrawerArrowToggle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="color">@color/white</item>
+    </style>
+
+  </resources>

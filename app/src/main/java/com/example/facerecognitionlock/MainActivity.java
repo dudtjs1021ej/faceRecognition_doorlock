@@ -11,6 +11,7 @@ import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -33,6 +34,8 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         setContentView(R.layout.activity_main);
 
         initLayout();
@@ -45,18 +48,12 @@ public class MainActivity extends AppCompatActivity
         TabLayout tab=findViewById(R.id.tab);
         tab.setupWithViewPager(viewPager);
 
-
-
-
-
         navigationView = (NavigationView) findViewById(R.id.nv_main_navigation_root);
         navigationView.setNavigationItemSelectedListener(this);
 
+        TabLayout tabLayout=findViewById(R.id.tab);
 
-
-
-
-
+        tabLayout.setTabTextColors(Color.parseColor("#757373"), Color.parseColor("#a1d6e4")); //탭바 글씨색, 선택된색
 
     }
 
@@ -105,13 +102,15 @@ public class MainActivity extends AppCompatActivity
 
     private void initLayout() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
+       // toolbar.setTitleTextColor(Color.BLACK);
+      //  toolbar.setTitle("Lock");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle("");
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setHomeAsUpIndicator(R.mipmap.ic_launcher);
+           // getSupportActionBar().setHomeAsUpIndicator(R.mipmap.menu);
         }
 
         drawerLayout = (DrawerLayout) findViewById(R.id.dl_main_drawer_root);
