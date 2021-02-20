@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity
         if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle("");
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-           // getSupportActionBar().setHomeAsUpIndicator(R.mipmap.menu);
+            //getSupportActionBar().setHomeAsUpIndicator(R.mipmap.menu);
         }
 
         drawerLayout = (DrawerLayout) findViewById(R.id.dl_main_drawer_root);
