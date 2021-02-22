@@ -59,9 +59,10 @@ public class Fragment_FaceRecognition extends Fragment {
     Button btn_load=null;
     EditText editText;
     private Uri filepath;
+    private String TAG;
 
     DatabaseReference mRootRef=FirebaseDatabase.getInstance().getReference();
-    private String TAG;
+    DatabaseReference conditionRef=mRootRef.child("name");
 
     public Fragment_FaceRecognition() {
 
@@ -72,6 +73,9 @@ public class Fragment_FaceRecognition extends Fragment {
                              Bundle savedInstanceState) {
         View v=inflater.inflate(R.layout.fragment_face_recognition, container, false);
         // Inflate the layout for this fragment
+
+
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (ContextCompat.checkSelfPermission(getActivity(),Manifest.permission.CAMERA) ==
                     PackageManager.PERMISSION_GRANTED &&
@@ -95,6 +99,12 @@ public class Fragment_FaceRecognition extends Fragment {
                 capture();
             }
         });
+        editText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editText.setText("");
+            }
+        });
 
         //storage
         btn_choose = (Button)v.findViewById(R.id.bt_choose);
@@ -113,6 +123,7 @@ public class Fragment_FaceRecognition extends Fragment {
         btn_load.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //conditionRef.setValue(editText.getText().toString());
                 uploadFile();
             }
         });
@@ -229,11 +240,10 @@ public class Fragment_FaceRecognition extends Fragment {
 
             FirebaseStorage storage=FirebaseStorage.getInstance();
 
-            //SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMH_mmss");
-            //Date now=new Date();
             String name=editText.getText().toString();
-            //String filename=formatter.format(now)+".jpg";
-            String filename=name+".jpg";
+            conditionRef.setValue(name);
+            String filename=name;
+
             StorageReference storageRef=storage.getReferenceFromUrl("gs://fir-connjava.appspot.com/").child("images/"+filename);
 
             storageRef.putFile(filepath)
