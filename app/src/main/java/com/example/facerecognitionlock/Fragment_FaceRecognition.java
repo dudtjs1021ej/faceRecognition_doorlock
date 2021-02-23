@@ -1,6 +1,8 @@
+
 package com.example.facerecognitionlock;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -153,16 +155,22 @@ public class Fragment_FaceRecognition extends Fragment {
         }
     }
 
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        //iv.setImageURI(data.getData());
+        //iv.setImageURI(data.getData())
         super.onActivityResult(requestCode, resultCode, data);
+        for(Fragment fragment : getFragmentManager().getFragments()){
+            fragment.onActivityResult(requestCode, resultCode, data);
+        }
+        //권한 설정
         if (requestCode == 1 && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             iv.setImageBitmap(imageBitmap);
         }
 
+        //choose
         if (requestCode == 0 && resultCode == RESULT_OK) {
             filepath = data.getData();
             Log.d(TAG, "uri:" + String.valueOf(filepath));
@@ -173,7 +181,7 @@ public class Fragment_FaceRecognition extends Fragment {
                 e.printStackTrace();
             }
         }
-
+        //take pic
         if (requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK) {
             File file = new File(mCurrentPhotoPath);
             Bitmap bitmap;
@@ -202,11 +210,9 @@ public class Fragment_FaceRecognition extends Fragment {
         }
     }
     private File createImageFile() throws IOException{
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HH").format(new Date());
-        String name="eunju"; String imageFileName= name + "_";
-        //String imageFileName="JPGE_"+timeStamp + "_";
+        String name=editText.getText().toString();
+        String imageFileName= name;
         File storageDir=getActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-        //File storageDir=new File(Environment.getExternalStorageDirectory()+"/eunju/",imageFileName);
         if(!storageDir.exists())storageDir.mkdirs();
         File image=File.createTempFile(imageFileName, ".jpg", storageDir);
         mCurrentPhotoPath=image.getAbsolutePath();
@@ -217,7 +223,6 @@ public class Fragment_FaceRecognition extends Fragment {
         Intent takePictureIntent=new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if(takePictureIntent.resolveActivity(getActivity().getPackageManager())!=null){
             File photoFile = null;
-
             try{
                 photoFile = createImageFile();
             } catch(IOException ex) {
