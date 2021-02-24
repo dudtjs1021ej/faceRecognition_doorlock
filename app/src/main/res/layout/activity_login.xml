@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="261dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="96dp"
+        android:fontFamily="@font/dream7"
+        android:text="LockLock"
+        android:textAlignment="center"
+        android:textColor="#00BCD4"
+        android:textSize="45dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/emailText"
+        android:layout_width="275dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="108dp"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+
+    <EditText
+        android:id="@+id/pwdText"
+        android:layout_width="275dp"
+        android:layout_height="45dp"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailText" />
+
+    <Button
+        android:id="@+id/loginBtn"
+        android:layout_width="275dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="16dp"
+        android:text="로그인"
+        android:textSize="18dp"
+        android:backgroundTint="#74ebd5"
+        android:fontFamily="@font/dream6"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pwdText" />
+
+    <Button
+        android:id="@+id/registerBtn"
+        android:layout_width="275dp"
+        android:layout_height="45dp"
+        android:text="회원가입"
+        android:textSize="18dp"
+        android:backgroundTint="#74ebd5"
+        android:fontFamily="@font/dream6"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginBtn"
+        app:layout_constraintVertical_bias="0.032" />
+</androidx.constraintlayout.widget.ConstraintLayout>
