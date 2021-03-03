@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,33 +9,45 @@
         android:id="@+id/textView"
         android:layout_width="209dp"
         android:layout_height="53dp"
-        android:layout_marginTop="132dp"
-        android:text="회원가입"
-        android:textSize="40dp"
+        android:layout_marginTop="136dp"
         android:fontFamily="@font/dream7"
-        android:textColor="#00BCD4"
+        android:text="회원가입"
         android:textAlignment="center"
+        android:textColor="#00BCD4"
+        android:textSize="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/emailTextR"
+        android:id="@+id/nameTextR"
         android:layout_width="255dp"
         android:layout_height="45dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="60dp"
         android:ems="10"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
+        android:hint="Username"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
+        android:id="@+id/emailTextR"
+        android:layout_width="255dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameTextR" />
+
+    <EditText
         android:id="@+id/pwdTextR"
         android:layout_width="255dp"
         android:layout_height="45dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
@@ -48,15 +59,15 @@
         android:id="@+id/registerBtnR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="가입하기"
         android:backgroundTint="#74ebd5"
         android:fontFamily="@font/dream6"
+        android:text="가입하기"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pwdTextR"
-        app:layout_constraintVertical_bias="0.092" />
+        app:layout_constraintVertical_bias="0.114" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

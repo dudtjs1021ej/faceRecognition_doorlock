@@ -23,7 +23,7 @@ import java.util.HashMap;
 
 public class RegisterActivity extends AppCompatActivity {
     private static final String TAG = "RegisterActivity";
-    EditText mEmailText, mPwdText;
+    EditText mNameText, mEmailText, mPwdText;
     Button mRegisterBtn;
     private FirebaseAuth firebaseAuth;
 
@@ -41,6 +41,7 @@ public class RegisterActivity extends AppCompatActivity {
         // firebase access
         firebaseAuth = FirebaseAuth.getInstance();
 
+        mNameText = findViewById(R.id.nameTextR);
         mEmailText = findViewById(R.id.emailTextR);
         mPwdText = findViewById(R.id.pwdTextR);
         mRegisterBtn = findViewById(R.id.registerBtnR);
@@ -58,6 +59,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 if(task.isSuccessful()) {
                                     FirebaseUser user = firebaseAuth.getCurrentUser();
 
+                                    String nickname = mNameText.getText().toString().trim();
                                     String email = user.getEmail();
                                     String uid = user.getUid();
 
@@ -66,6 +68,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                                     hashMap.put("uid",uid);
                                     hashMap.put("email",email);
+                                    hashMap.put("nickname",nickname);
 
                                     FirebaseDatabase db = FirebaseDatabase.getInstance();
                                     DatabaseReference ref = db.getReference("Users");
