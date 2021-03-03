@@ -228,7 +228,7 @@ public class Face extends AppCompatActivity {
 
             String name=editText.getText().toString();
             conditionRef.setValue(name);
-            String filename=name;
+            String filename=name+".jpg";
             StorageReference storageRef=storage.getReferenceFromUrl("gs://fir-connjava.appspot.com/").child("images/"+filename);
 
             storageRef.putFile(filepath)
