@@ -24,6 +24,7 @@ public class Fragment_Lock extends Fragment {
     ImageButton door_btn;
     String door="close";
 
+
     private Executor executor;
     private BiometricPrompt biometricPrompt;
     private BiometricPrompt.PromptInfo promptInfo;
@@ -41,6 +42,15 @@ public class Fragment_Lock extends Fragment {
         DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
         DatabaseReference conditionRef = mRootRef.child("door");
 
+        door_btn=(ImageButton)view.findViewById(R.id.imageButton);
+
+        promptInfo = new BiometricPrompt.PromptInfo.Builder()
+                .setTitle("지문 인증")
+                .setSubtitle("기기에 등록된 지문을 이용하여 지문을 인증해주세요.")
+                .setNegativeButtonText("취소")
+                .setDeviceCredentialAllowed(false)
+                .build();
+
         // 지문인식
         executor = ContextCompat.getMainExecutor(getActivity());
         biometricPrompt = new BiometricPrompt(this, executor, new BiometricPrompt.AuthenticationCallback() {
@@ -54,40 +64,36 @@ public class Fragment_Lock extends Fragment {
                     @NonNull BiometricPrompt.AuthenticationResult result) {
                 super.onAuthenticationSucceeded(result);
                 Toast.makeText(getActivity().getApplicationContext(), "지문인증에 성공했습니다.", Toast.LENGTH_SHORT).show();
-            }
+
+                if(door.equals("open")) {
+                    System.out.println("test open");
+                    door_btn.setImageDrawable(getActivity().getDrawable(R.drawable.door_close_remove));
+                    door = "close";
+                    conditionRef.setValue(door);
+                }
+                else if(door.equals("close")) {
+                    System.out.println("test close");
+                    door_btn.setImageDrawable(getActivity().getDrawable(R.drawable.door_open_remove));
+                    door="open";
+                    conditionRef.setValue(door);
+
+                    }
+
+                }
             @Override
             public void onAuthenticationFailed() {
                 super.onAuthenticationFailed();
                 Toast.makeText(getActivity().getApplicationContext(), "지문인증에 실패했습니다.", Toast.LENGTH_SHORT).show();
             }
-
         });
-
-        promptInfo = new BiometricPrompt.PromptInfo.Builder()
-                .setTitle("지문 인증")
-                .setSubtitle("기기에 등록된 지문을 이용하여 지문을 인증해주세요.")
-                .setNegativeButtonText("취소")
-                .setDeviceCredentialAllowed(false)
-                .build();
-
-        door_btn=(ImageButton)view.findViewById(R.id.imageButton);
         door_btn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                if(door.equals("open")) {
-                    biometricPrompt.authenticate(promptInfo);
-                    door_btn.setImageDrawable(getActivity().getDrawable(R.drawable.door_close_remove));
-                    door="close";
-                    conditionRef.setValue(door);
+                biometricPrompt.authenticate(promptInfo);
                 }
-                else if(door.equals("close")) {
-                    biometricPrompt.authenticate(promptInfo);
-                    door_btn.setImageDrawable(getActivity().getDrawable(R.drawable.door_open_remove));
-                    door="open";
-                    conditionRef.setValue(door);
-                }
-            }
+
         });
+
         // Inflate the layout for this fragment
         return view;
 
