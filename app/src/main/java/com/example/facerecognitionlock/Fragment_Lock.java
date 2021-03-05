@@ -13,8 +13,11 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.concurrent.Executor;
 
@@ -23,6 +26,7 @@ public class Fragment_Lock extends Fragment {
 
     ImageButton door_btn;
     String door="close";
+    String data_door;
 
 
     private Executor executor;
@@ -41,6 +45,17 @@ public class Fragment_Lock extends Fragment {
 
         DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
         DatabaseReference conditionRef = mRootRef.child("door");
+        conditionRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                data_door=snapshot.getValue(String.class);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         door_btn=(ImageButton)view.findViewById(R.id.imageButton);
 
@@ -64,20 +79,22 @@ public class Fragment_Lock extends Fragment {
                     @NonNull BiometricPrompt.AuthenticationResult result) {
                 super.onAuthenticationSucceeded(result);
                 Toast.makeText(getActivity().getApplicationContext(), "지문인증에 성공했습니다.", Toast.LENGTH_SHORT).show();
+                if(data_door.equals("wait")) {
+                    if (door.equals("open")) {
+                        System.out.println("test open");
+                        door_btn.setImageDrawable(getActivity().getDrawable(R.drawable.door_close_remove));
+                        door = "close";
+                        conditionRef.setValue(door);
 
-                if(door.equals("open")) {
-                    System.out.println("test open");
-                    door_btn.setImageDrawable(getActivity().getDrawable(R.drawable.door_close_remove));
-                    door = "close";
-                    conditionRef.setValue(door);
-                }
-                else if(door.equals("close")) {
-                    System.out.println("test close");
-                    door_btn.setImageDrawable(getActivity().getDrawable(R.drawable.door_open_remove));
-                    door="open";
-                    conditionRef.setValue(door);
+                    } else if (door.equals("close")) {
+                        System.out.println("test close");
+                        door_btn.setImageDrawable(getActivity().getDrawable(R.drawable.door_open_remove));
+                        door = "open";
+                        conditionRef.setValue(door);
+
 
                     }
+                }
 
                 }
             @Override
