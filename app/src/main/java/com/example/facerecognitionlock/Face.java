@@ -189,7 +189,8 @@ public class Face extends AppCompatActivity {
     }
     private File createImageFile() throws IOException{
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HH").format(new Date());
-        String name="eunju"; String imageFileName= name + "_";
+        String name=editText.getText().toString();
+        String imageFileName= name + "_";
         //String imageFileName="JPGE_"+timeStamp + "_";
         File storageDir=getExternalFilesDir(Environment.DIRECTORY_PICTURES);
         //File storageDir=new File(Environment.getExternalStorageDirectory()+"/eunju/",imageFileName);
