@@ -59,7 +59,7 @@
             android:ems="10"
             android:fontFamily="@font/dream6"
             android:inputType="textPersonName"
-            android:text="이름을 입력하세요"
+            android:hint="이름을 입력하세요"
             android:textColor="#74ebd5"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/bt_upload"

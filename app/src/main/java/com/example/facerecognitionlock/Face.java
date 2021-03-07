@@ -98,12 +98,7 @@ public class Face extends AppCompatActivity {
                 capture();
             }
         });
-        editText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                editText.setText("");
-            }
-        });
+
 
         //storage
         btn_choose = (Button) findViewById(R.id.bt_choose);
