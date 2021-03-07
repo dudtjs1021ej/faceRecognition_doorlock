@@ -43,6 +43,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
+
 import static android.os.Environment.DIRECTORY_PICTURES;
 
 public class Face extends AppCompatActivity {
@@ -144,86 +146,21 @@ public class Face extends AppCompatActivity {
             Log.d(TAG, "Permissson: " + permissions[0] + "was " + grantResults[0]);
         }
     }
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
 
-        //check the permission
-        if (requestCode == 1 && resultCode == RESULT_OK) {
-            Bundle extras = data.getExtras();
-            Bitmap imageBitmap = (Bitmap) extras.get("data");
-            iv.setImageBitmap(imageBitmap);
-        }
-
-        //take pic
-        if (requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK) {
-            Bitmap bitmap = BitmapFactory.decodeFile(imageFilePath);
-            ExifInterface exif = null;
-
-            try {
-                exif = new ExifInterface(imageFilePath);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            String result = "";
-            String filename  = editText.getText().toString();
-
-            String           strFolderName = Environment.getExternalStoragePublicDirectory(DIRECTORY_PICTURES) + File.separator + "LockLock" + File.separator;
-            File file = new File(strFolderName);
-            if( !file.exists() )
-                file.mkdirs();
-
-            File f = new File(strFolderName + "/" + filename + ".jpg");
-            result = f.getPath();
-
-            FileOutputStream fOut = null;
-            try {
-                fOut = new FileOutputStream(f);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-                result = "Save Error fOut";
-            }
-
-            // 비트맵 사진 폴더 경로에 저장
-            bitmap.compress(Bitmap.CompressFormat.JPEG,70,fOut);
-            try {
-                fOut.flush();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            try {
-                fOut.close();
-                // 방금 저장된 사진을 갤러리 폴더 반영 및 최신화
-                mMediaScanner.mediaScanning(strFolderName + "/" + filename + ".jpg");
-            } catch (IOException e) {
-                e.printStackTrace();
-                result = "File close Error";
-            }
-            iv.setImageBitmap(bitmap);
-        }
-
-
-        //image choose
-        if (requestCode == 0 && resultCode == RESULT_OK) {
-            filepath = data.getData();
-            Log.d(TAG, "uri:" + String.valueOf(filepath));
-            try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filepath);
-                iv.setImageBitmap(bitmap);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
     private File createImageFile() throws IOException{
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HH").format(new Date());
-        String name=editText.getText().toString();
+        String name;
+        SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HHmmss", Locale.getDefault());
+        Date curDate=new Date(System.currentTimeMillis());
+        String num=format.format(curDate);
+
+        if(editText.length()==0){
+            name="User"+num;
+        }else{
+            name=editText.getText().toString();
+        }
         String imageFileName= name + "_";
-        //String imageFileName="JPGE_"+timeStamp + "_";
+
         File storageDir=getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-        //File storageDir=new File(Environment.getExternalStorageDirectory()+"/eunju/",imageFileName);
-        if(!storageDir.exists())storageDir.mkdirs();
         File image=File.createTempFile(imageFileName, ".jpg", storageDir);
         //mCurrentPhotoPath=image.getAbsolutePath();
         imageFilePath=image.getAbsolutePath();
@@ -240,9 +177,8 @@ public class Face extends AppCompatActivity {
                 ex.printStackTrace();
             }
             if(photoFile!=null){
-                Uri photoURI= FileProvider.getUriForFile(this,
-                        "com.example.facerecognitionlock",photoFile);
-                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT,photoURI);
+                filepath= FileProvider.getUriForFile(getApplicationContext(),getPackageName(),photoFile);
+                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT,filepath);
                 startActivityForResult(takePictureIntent,REQUEST_TAKE_PHOTO);
             }
         }
@@ -255,8 +191,12 @@ public class Face extends AppCompatActivity {
             progressDialog.show();
 
             FirebaseStorage storage=FirebaseStorage.getInstance();
-
-            String name=editText.getText().toString();
+            String name;
+            if(editText.length()==0){
+                name="User";
+            }else{
+                name=editText.getText().toString();
+            }
             conditionRef.setValue(name);
             String filename=name+".jpg";
             StorageReference storageRef=storage.getReferenceFromUrl("gs://fir-connjava.appspot.com/").child("images/"+filename);
@@ -287,5 +227,86 @@ public class Face extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),"파일을 먼저 선택하세요.",Toast.LENGTH_SHORT).show();
         }
         editText.setText(" ");
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        //check the permission
+        if (requestCode == 1 && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            iv.setImageBitmap(imageBitmap);
+        }
+
+        //take pic
+        if (requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK) {
+            Bitmap bitmap = BitmapFactory.decodeFile(imageFilePath);
+            ExifInterface exif = null;
+
+            try {
+                exif = new ExifInterface(imageFilePath);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            String result = "";
+
+            String filename;
+            SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HHmmss", Locale.getDefault());
+            Date curDate=new Date(System.currentTimeMillis());
+            String num=format.format(curDate);
+            if(editText.length()==0){
+                filename="User"+num;
+            }else{
+                filename=editText.getText().toString();
+            }
+
+            String strFolderName = Environment.getExternalStoragePublicDirectory(DIRECTORY_PICTURES) + File.separator + "LockLock" + File.separator;
+            File file = new File(strFolderName);
+            if( !file.exists() )
+                file.mkdirs();
+
+            File f = new File(strFolderName + "/" + filename + ".jpg");
+            result = f.getPath();
+
+            FileOutputStream fOut = null;
+            try {
+                fOut = new FileOutputStream(f);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+                result = "Save Error fOut";
+            }
+
+            // 비트맵 사진 폴더 경로에 저장
+            bitmap.compress(Bitmap.CompressFormat.JPEG,70, fOut);
+            try {
+                fOut.flush();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try {
+                fOut.close();
+                // 방금 저장된 사진을 갤러리 폴더 반영 및 최신화
+                mMediaScanner.mediaScanning(strFolderName + "/" + filename + ".jpg");
+            } catch (IOException e) {
+                e.printStackTrace();
+                result = "File close Error";
+            }
+            iv.setImageBitmap(bitmap);
+        }
+
+
+        //image choose
+        if (requestCode == 0 && resultCode == RESULT_OK) {
+            filepath = data.getData();
+            Log.d(TAG, "uri:" + String.valueOf(filepath));
+            try {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filepath);
+                iv.setImageBitmap(bitmap);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
