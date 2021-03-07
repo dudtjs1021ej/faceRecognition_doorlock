@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <cache-path
+        name="cache"
+        path="." /> <!--Context.getCacheDir() 내부 저장소-->
+    <files-path
+        name="files"
+        path="." /> <!--Context.getFilesDir() 내부 저장소-->
+
     <external-path
-        name="my_images"
-        path="Android/data/com.example.facerecognitionlock/files/Pictures"/>
+        name="external"
+        path="."/>  <!--  Environment.getExternalStorageDirectory() 외부 저장소-->
+    <external-cache-path
+        name="external-cache"
+        path="."/> <!--  Context.getExternalCacheDir() 외부 저장소-->
+    <external-files-path
+        name="external-files"
+        path="."/> <!--  Context.getExternalFilesDir() 외부 저장소-->
 </paths>
