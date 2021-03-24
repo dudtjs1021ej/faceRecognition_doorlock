@@ -12,6 +12,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.ImageDecoder;
+import android.graphics.Matrix;
 import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Build;
@@ -228,6 +229,23 @@ public class Face extends AppCompatActivity {
         }
         editText.setText(" ");
     }
+    private int exifOrientationToDegress(int exifOrientation) {
+        if (exifOrientation == ExifInterface.ORIENTATION_ROTATE_90) {
+            return 90;
+        } else if (exifOrientation == ExifInterface.ORIENTATION_ROTATE_180) {
+            return 180;
+        } else if (exifOrientation == ExifInterface.ORIENTATION_ROTATE_270) {
+            return 270;
+        }
+        return 0;
+    }
+
+    private Bitmap rotate(Bitmap bitmap, float degree) {
+        Matrix matrix = new Matrix();
+        matrix.postRotate(degree);
+        return Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -250,12 +268,23 @@ public class Face extends AppCompatActivity {
                 e.printStackTrace();
             }
 
+            int exifOrientation;
+            int exifDegree;
+
+            if(exif !=null){
+                exifOrientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL);
+                exifDegree=exifOrientationToDegress(exifOrientation);
+            }else{
+                exifDegree=0;
+            }
+
             String result = "";
 
             String filename;
             SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HHmmss", Locale.getDefault());
             Date curDate=new Date(System.currentTimeMillis());
             String num=format.format(curDate);
+
             if(editText.length()==0){
                 filename="User"+num;
             }else{
@@ -279,7 +308,9 @@ public class Face extends AppCompatActivity {
             }
 
             // 비트맵 사진 폴더 경로에 저장
-            bitmap.compress(Bitmap.CompressFormat.JPEG,70, fOut);
+            rotate(bitmap,exifDegree).compress(Bitmap.CompressFormat.JPEG,70, fOut);
+            //bitmap.compress(Bitmap.CompressFormat.JPEG,70, fOut);
+
             try {
                 fOut.flush();
             } catch (IOException e) {
@@ -293,7 +324,8 @@ public class Face extends AppCompatActivity {
                 e.printStackTrace();
                 result = "File close Error";
             }
-            iv.setImageBitmap(bitmap);
+            iv.setImageBitmap(rotate(bitmap,exifDegree));
+            //iv.setImageBitmap(bitmap);
         }
 
 
