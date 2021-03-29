@@ -24,7 +24,7 @@
                 android:text="새로고침" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/alarm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="알림" />

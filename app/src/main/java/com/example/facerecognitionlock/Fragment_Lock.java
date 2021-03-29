@@ -96,7 +96,7 @@ public class Fragment_Lock extends Fragment {
                     }
                 }
 
-                }
+            }
             @Override
             public void onAuthenticationFailed() {
                 super.onAuthenticationFailed();
@@ -107,7 +107,7 @@ public class Fragment_Lock extends Fragment {
             @Override
             public void onClick(View view) {
                 biometricPrompt.authenticate(promptInfo);
-                }
+            }
 
         });
 
