@@ -201,7 +201,7 @@ public class Face extends AppCompatActivity {
             }
             conditionRef.setValue(name);
             conditionValue.setValue("True");
-            String filename=name+".jpg";
+            String filename=name+"1.jpg";
             StorageReference storageRef=storage.getReferenceFromUrl("gs://fir-connjava.appspot.com/").child("images/"+filename);
 
             storageRef.putFile(filepath)
