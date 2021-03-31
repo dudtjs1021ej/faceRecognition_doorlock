@@ -197,7 +197,7 @@ public class Face extends AppCompatActivity {
             if(editText.length()==0){
                 name="User";
             }else{
-                name=editText.getText().toString();
+                name=editText.getText().toString().trim();
             }
             conditionRef.setValue(name);
             conditionValue.setValue("True");
