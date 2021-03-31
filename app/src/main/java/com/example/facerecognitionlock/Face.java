@@ -65,6 +65,7 @@ public class Face extends AppCompatActivity {
 
     DatabaseReference mRootRef=FirebaseDatabase.getInstance().getReference();
     DatabaseReference conditionRef = mRootRef.child("name");
+    DatabaseReference conditionValue = mRootRef.child("start_value");
     private String TAG;
 
     private MediaScanner mMediaScanner;
@@ -199,6 +200,7 @@ public class Face extends AppCompatActivity {
                 name=editText.getText().toString();
             }
             conditionRef.setValue(name);
+            conditionValue.setValue("True");
             String filename=name+".jpg";
             StorageReference storageRef=storage.getReferenceFromUrl("gs://fir-connjava.appspot.com/").child("images/"+filename);
 
