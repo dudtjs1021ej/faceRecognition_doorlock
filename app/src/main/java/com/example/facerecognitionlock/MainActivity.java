@@ -22,6 +22,11 @@ import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -29,10 +34,13 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
     implements NavigationView.OnNavigationItemSelectedListener {
+
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     ActionBarDrawerToggle drawerToggle;
     Toolbar toolbar;
+
+    Boolean data_alarm=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +67,20 @@ public class MainActivity extends AppCompatActivity
 
         tabLayout.setTabTextColors(Color.parseColor("#757373"), Color.parseColor("#a1d6e4")); //탭바 글씨색, 선택된색
 
+        DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference conditionRef = mRootRef.child("door");
+        /*conditionRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                data_alarm=snapshot.getValue(Boolean.class);
+                System.out.println("data_alarm"+data_alarm);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });*/
     }
 
 
