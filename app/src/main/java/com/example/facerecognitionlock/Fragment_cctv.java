@@ -101,7 +101,7 @@ public class Fragment_cctv extends Fragment {
         //visitorList();
         thisContext = container.getContext();
 
-        //visitorList
+        visitorList();
         /*database=FirebaseDatabase.getInstance(); //파이어베이스 데이터베이스 연동
         databaseReference=database.getReference("Visitors"); //DB연결
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -150,8 +150,8 @@ public class Fragment_cctv extends Fragment {
                     //visitorList();
 
                    // System.out.println("사진: "+item.getprofile()+" 시간 : "+item.getTime());
-                    LoadImage loadImage = new LoadImage(imgUrl2);
-                    System.out.println("imgUrlllll:" + imgUrl2);
+                    LoadImage loadImage = new LoadImage(imgUrl);
+                    System.out.println("imgUrlllll:" + imgUrl);
                     Bitmap bitmap = loadImage.getBitmap();
                     //System.out.println("imgURL:" + imgUrl);
                     push = new Intent(thisContext, MainActivity.class);
@@ -161,7 +161,7 @@ public class Fragment_cctv extends Fragment {
                     builder.setSmallIcon(R.drawable.label);
                     builder.setLargeIcon(bitmap);
                     builder.setContentTitle("출입 감지");
-                    builder.setContentText(visitTime2); // 방문 시간
+                    builder.setContentText(visitTime); // 방문 시간
                     // 사용자가 클릭시 자동 제거
                     builder.setAutoCancel(true);
                     // 최고 우선순위-head up
@@ -235,7 +235,7 @@ public class Fragment_cctv extends Fragment {
         database=FirebaseDatabase.getInstance(); //파이어베이스 데이터베이스 연동
 
         databaseReference=database.getReference("Visitors"); //DB연결
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 //파이어베이스 데이터베이스 get
