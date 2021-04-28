@@ -27,7 +27,7 @@ public class VAdapter extends FragmentPagerAdapter {
 
         itext.add("출입 기록");
         itext.add("도어락 제어");
-        itext.add("얼굴 인식");
+        itext.add("사용자 관리");
 
 
 

@@ -9,13 +9,7 @@
     <item
         android:id="@+id/item2"
         android:icon="@mipmap/ic_launcher_round"
-        android:title="환경설정"
-        />
-
-    <item
-        android:id="@+id/item3"
-        android:icon="@mipmap/ic_launcher_round"
-        android:title="item3"
+        android:title="앱 설명"
         />
 
 </menu>

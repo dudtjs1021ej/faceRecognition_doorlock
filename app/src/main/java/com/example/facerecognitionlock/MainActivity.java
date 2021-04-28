@@ -87,14 +87,12 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()) {
-            case R.id.item1:
-                Toast.makeText(this, "item1 clicked..", Toast.LENGTH_SHORT).show();
+            case R.id.item1: // 마이페이지
+                //Toast.makeText(this, "item1 clicked..", Toast.LENGTH_SHORT).show();
+
                 break;
-            case R.id.item2:
-                Toast.makeText(this, "item2 clicked..", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.item3:
-                Toast.makeText(this, "item3 clicked..", Toast.LENGTH_SHORT).show();
+            case R.id.item2: // 앱 설명
+                Toast.makeText(this, "앱 설명", Toast.LENGTH_SHORT).show();
                 break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);
