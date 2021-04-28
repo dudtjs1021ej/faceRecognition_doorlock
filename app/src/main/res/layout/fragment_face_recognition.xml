@@ -39,14 +39,27 @@
                 android:text="사진 등록하기"
                 android:textColor="@color/white" />
 
-            <TextView
-                android:id="@+id/textView5"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:fontFamily="@font/dream4"
-                android:text="사용자 목록"
-                android:textSize="25dp" />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:fontFamily="@font/dream4"
+                    android:text="사용자 목록"
+                    android:textSize="25dp" />
+
+                <ImageButton
+                    android:id="@+id/refreshButton"
+                    android:layout_width="70dp"
+                    android:layout_height="40dp"
+                    android:background="#00FFFFFF"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/refresh_button" />
+            </LinearLayout>
 
             <HorizontalScrollView
                 android:layout_width="match_parent"
