@@ -89,7 +89,9 @@ public class MainActivity extends AppCompatActivity
         switch(item.getItemId()) {
             case R.id.item1: // 마이페이지
                 //Toast.makeText(this, "item1 clicked..", Toast.LENGTH_SHORT).show();
-
+                Intent intent = new Intent(this, MyPage.class);
+                startActivity(intent);
+                finish();
                 break;
             case R.id.item2: // 앱 설명
                 Toast.makeText(this, "앱 설명", Toast.LENGTH_SHORT).show();

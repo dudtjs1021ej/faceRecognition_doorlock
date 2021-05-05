@@ -50,7 +50,7 @@ public class Fragment_FaceRecognition extends Fragment {
         thisContext = container.getContext();
         button = (Button) view.findViewById(R.id.btn);
         refreshButton = (ImageButton) view.findViewById(R.id.refreshButton);
-       userLinearLayout=(LinearLayout) view.findViewById(R.id.userLinearLayout);
+        userLinearLayout=(LinearLayout) view.findViewById(R.id.userLinearLayout);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override

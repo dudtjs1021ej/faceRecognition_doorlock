@@ -7,12 +7,12 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.452"
+        android:id="@+id/iv"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="72dp"
+        android:scaleType="fitCenter"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
@@ -20,7 +20,7 @@
     <TextView
         android:id="@+id/mpNickname"
         android:layout_width="100dp"
-        android:layout_height="37dp"
+        android:layout_height="35dp"
         android:layout_marginTop="80dp"
         android:fontFamily="@font/dream5"
         android:text="Nickname"
@@ -28,68 +28,112 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.051"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
-    <TextView
-        android:id="@+id/mpNickname2"
-        android:layout_width="100dp"
-        android:layout_height="37dp"
-        android:layout_marginTop="80dp"
-        android:hint="Nickname"
-        android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/iv" />
 
     <TextView
         android:id="@+id/mpEmail"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="35dp"
         android:layout_marginTop="40dp"
         android:fontFamily="@font/dream5"
         android:text="Email"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.152"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mpNickname" />
-
-    <TextView
-        android:id="@+id/mpEmail2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:hint="Email"
-        android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.429"
+        app:layout_constraintHorizontal_bias="0.15"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mpNickname" />
 
     <TextView
         android:id="@+id/mpPwd"
         android:layout_width="wrap_content"
-        android:layout_height="27dp"
+        android:layout_height="35dp"
         android:layout_marginTop="40dp"
         android:fontFamily="@font/dream5"
         android:text="Password"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.050"
+        app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mpEmail" />
 
     <TextView
-        android:id="@+id/mpPwd2"
-        android:layout_width="wrap_content"
-        android:layout_height="27dp"
-        android:layout_marginTop="40dp"
-        android:hint="Password"
+        android:id="@+id/mpNickname2"
+        android:layout_width="250dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="80dp"
+        android:fontFamily="@font/dream4"
+        android:hint="Nickname"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintHorizontal_bias="0.788"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv" />
+
+    <TextView
+        android:id="@+id/mpEmail2"
+        android:layout_width="250dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/dream4"
+        android:hint="Email"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.788"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mpNickname" />
+
+    <EditText
+        android:id="@+id/mpPwd2"
+        android:layout_width="180dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/dream3"
+        android:hint="Password"
+        android:textSize="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.549"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mpEmail" />
+
+    <Button
+        android:id="@+id/setBtn"
+        android:layout_width="72dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="28dp"
+        android:backgroundTint="#74ebd5"
+        android:fontFamily="@font/dream5"
+        android:text="변경"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintStart_toEndOf="@+id/mpPwd2"
+        app:layout_constraintTop_toBottomOf="@+id/mpEmail2" />
+
+    <Button
+        android:id="@+id/deleteUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:backgroundTint="#74ebd5"
+        android:fontFamily="@font/dream5"
+        android:text="회원탈퇴"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/editBtn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="176dp"
+        android:layout_marginEnd="76dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/iv"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/edit" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
