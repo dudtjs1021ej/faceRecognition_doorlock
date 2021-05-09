@@ -33,7 +33,7 @@ import java.util.ArrayList;
 public class Fragment_FaceRecognition extends Fragment {
 
     ArrayList<String> imgURLs=new ArrayList<>();
-    Button button;
+    ImageButton button;
     ImageButton refreshButton;
     LinearLayout userLinearLayout;
     Context thisContext;
@@ -48,7 +48,7 @@ public class Fragment_FaceRecognition extends Fragment {
                              Bundle savedInstanceState) {
         ViewGroup view = (ViewGroup) inflater.inflate(R.layout.fragment_face_recognition, container, false);
         thisContext = container.getContext();
-        button = (Button) view.findViewById(R.id.btn);
+        button = (ImageButton) view.findViewById(R.id.btn);
         refreshButton = (ImageButton) view.findViewById(R.id.refreshButton);
         userLinearLayout=(LinearLayout) view.findViewById(R.id.userLinearLayout);
 

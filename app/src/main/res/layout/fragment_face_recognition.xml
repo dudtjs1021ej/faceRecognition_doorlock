@@ -29,14 +29,14 @@
                 android:text="사용자 등록"
                 android:textSize="25dp" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/btn"
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
+                android:layout_width="139dp"
+                android:layout_height="137dp"
                 android:layout_marginBottom="100dp"
-                android:backgroundTint="#74ebd5"
+                android:background="@mipmap/add"
                 android:fontFamily="@font/dream6"
-                android:text="사진 등록하기"
+                android:text="사용자 등록하기"
                 android:textColor="@color/white" />
 
             <LinearLayout
