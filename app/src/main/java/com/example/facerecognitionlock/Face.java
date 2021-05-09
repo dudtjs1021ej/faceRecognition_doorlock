@@ -23,6 +23,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -57,7 +58,7 @@ public class Face extends AppCompatActivity {
     final static int REQUEST_TAKE_PHOTO=10;
 
     ImageView iv=null;
-    Button btn_takepic=null;
+    ImageButton btn_takepic=null;
     Button btn_choose=null;
     Button btn_load=null;
     EditText editText;
@@ -93,7 +94,7 @@ public class Face extends AppCompatActivity {
         }
 
         //사진
-        btn_takepic = (Button) findViewById(R.id.take_picture);
+        btn_takepic = (ImageButton)findViewById(R.id.take_picture);
         iv = (ImageView) findViewById(R.id.image);
         editText=(EditText)findViewById(R.id.edit_name);
         btn_takepic.setOnClickListener(new View.OnClickListener() {

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_white"
+    android:visibility="visible"
     tools:context=".Face">
 
     <ImageView
@@ -12,76 +13,104 @@
         android:layout_width="316dp"
         android:layout_height="371dp"
         android:layout_marginTop="68dp"
+        android:background="@drawable/frame"
+        android:autofillHints="사진을 찍어주세요"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/take_picture"
+    <TextView
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
-        android:backgroundTint="#74ebd5"
+        android:text="사진을 찍어주세요"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/image"
+        app:layout_constraintEnd_toEndOf="@+id/image"
+        app:layout_constraintStart_toStartOf="@+id/image"
+        app:layout_constraintTop_toTopOf="@+id/image" />
+
+    <ImageButton
+        android:id="@+id/take_picture"
+        android:layout_width="43dp"
+        android:layout_height="43dp"
+        android:background="@drawable/camera"
         android:fontFamily="@font/dream6"
-        android:text="촬영"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/bt_choose"
-        app:layout_constraintTop_toBottomOf="@+id/image" />
-
-    <Button
-        android:id="@+id/bt_choose"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="56dp"
-        android:backgroundTint="#74ebd5"
-        android:fontFamily="@font/dream6"
-        android:text="Choose"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toStartOf="@+id/take_picture"
-        app:layout_constraintHorizontal_bias="0.72"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="-16dp"
+        tools:layout_editor_absoluteY="-148dp">
+
+
         <EditText
             android:id="@+id/edit_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginBottom="60dp"
+            android:layout_width="269dp"
+            android:layout_height="44dp"
+            android:layout_marginBottom="140dp"
             android:backgroundTint="#74ebd5"
             android:ems="10"
             android:fontFamily="@font/dream6"
+            android:hint="등록할 사용자 이름을 적어주세요"
             android:inputType="textPersonName"
-            android:hint="이름을 입력하세요"
             android:textColor="#74ebd5"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/bt_upload"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintVertical_bias="0.597" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.788"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/bt_upload"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="52dp"
-            android:layout_marginBottom="60dp"
+            android:layout_marginStart="84dp"
+            android:layout_marginBottom="10dp"
             android:backgroundTint="#74ebd5"
             android:fontFamily="@font/dream6"
             android:text="Upload"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_name"
+            app:layout_constraintVertical_bias="0.707" />
+
+        <Button
+            android:id="@+id/bt_choose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#74ebd5"
+            android:fontFamily="@font/dream6"
+            android:text="Choose"
+            android:textColor="@color/white"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/edit_name"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintHorizontal_bias="0.367"
+            app:layout_constraintStart_toEndOf="@+id/bt_upload"
+            app:layout_constraintTop_toBottomOf="@+id/edit_name"
+            app:layout_constraintVertical_bias="0.937" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="55dp"
+            android:layout_height="36dp"
+            android:layout_marginBottom="140dp"
+            android:fontFamily="@font/dream6"
+            android:text="이름"
+            android:textAlignment="center"
+            android:textColor="#74ebd5"
+            android:textSize="23dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/edit_name"
+            app:layout_constraintHorizontal_bias="0.877"
+            app:layout_constraintStart_toStartOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
