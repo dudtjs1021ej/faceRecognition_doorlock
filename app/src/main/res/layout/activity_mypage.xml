@@ -133,7 +133,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/iv"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/edit" />
+        app:layout_constraintTop_toTopOf="parent"/>
+       <!-- app:srcCompat="@drawable/edit"-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,56 +1,58 @@
-//package com.example.facerecognitionlock;
-//
-//import androidx.appcompat.app.AppCompatActivity;
-//import androidx.constraintlayout.widget.ConstraintLayout;
-//
-//import android.app.Activity;
-//import android.content.Intent;
-//import android.graphics.PixelFormat;
-//import android.os.Bundle;
-//import android.view.Window;
-//import android.view.animation.Animation;
-//import android.view.animation.AnimationUtils;
-//import java.util.Random;
-//
-//public class SplashActivity extends Activity {
-//    public void onAttachedToWindow(){
-//        super.onAttachedToWindow();
-//        Window window=getWindow();
-//        window.setFormat(PixelFormat.RGBA_8888);
-//    }
-//    Thread splashThread;
-//
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_splash);
-//        StartAnimation();
-//    }
-//
-//    public void StartAnimation(){
-//        Animation anim= AnimationUtils.loadAnimation(this,R.anim.anim_splash_ball);
-//        anim.reset();
-//        ConstraintLayout c= (ConstraintLayout)findViewById(R.id.constraintLayout);
-//        c.clearAnimation();
-//        c.startAnimation(anim);
-//
-//        splashThread = new Thread(){
-//            public void run(){
-//                try{
-//                    int waited=0;
-//                    while(waited<3500){
-//                        sleep(100);
-//                        waited+=100;
-//                    }
-//                    Intent intent=new Intent(SplashActivity.this,Login.this);
-//
-//                }catch (InterruptedException e){
-//
-//                }
-//            }
-//        };
-//        splashThread.start();
-//
-//    }
-//
-//}
+package com.example.facerecognitionlock;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+
+public class SplashActivity extends Activity {
+    Animation anim_FadeIn;
+    Animation anim_ball;
+    ConstraintLayout constraintLayout;
+    ImageView lcklockImageView;
+    ImageView oImageView;
+    ImageView faceRecgnitionImageView;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_splash);
+
+        constraintLayout=findViewById(R.id.constraintLayout);
+        lcklockImageView=findViewById(R.id.lock_lck);
+        oImageView=findViewById(R.id.lock_o);
+        faceRecgnitionImageView=findViewById(R.id.faceReconition);
+
+
+        anim_FadeIn=AnimationUtils.loadAnimation(this,R.anim.anim_splash_fadein);
+        anim_ball=AnimationUtils.loadAnimation(this,R.anim.anim_splash_ball);
+
+
+        anim_FadeIn.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                startActivity(new Intent(SplashActivity.this,MainActivity.class));
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+       lcklockImageView.startAnimation(anim_FadeIn);
+       faceRecgnitionImageView.startAnimation(anim_FadeIn);
+       oImageView.startAnimation(anim_ball);
+
+    }
+
+
+}

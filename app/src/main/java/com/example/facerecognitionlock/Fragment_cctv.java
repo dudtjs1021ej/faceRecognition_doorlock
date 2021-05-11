@@ -4,15 +4,10 @@ import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -27,32 +22,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.ImageButton;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 //import com.kakao.sdk.template.model.FeedTemplate;
 
-import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-import static android.content.Context.NOTIFICATION_SERVICE;
-
 
 public class Fragment_cctv extends Fragment {
-    Button button;
+    ImageButton button;
     Button alarm;
     Boolean bAlarm;
 
@@ -90,8 +77,8 @@ public class Fragment_cctv extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_cctv, container, false);
-        button=(Button)view.findViewById(R.id.button);
-        alarm=(Button)view.findViewById(R.id.alarm);
+        button=view.findViewById(R.id.refreshButton3);
+
         recyclerView=view.findViewById(R.id.recyclerview);
 
         recyclerView.setHasFixedSize(true);
@@ -212,20 +199,20 @@ public class Fragment_cctv extends Fragment {
 
         });
 
-        alarm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            /*public void onClick(View v) {
-                NotificationManager notiMan = (NotificationManager) getActivity().getSystemService(NOTIFICATION_SERVICE);
-                if (Build.VERSION.SDK_INT >= 26)
-                {
-                    notiMan.createNotificationChannel(new NotificationChannel("chnotl", "채널", NotificationManager.IMPORTANCE_DEFAULT));
-                }
-                notiMan.notify(1004, builder.build());
-            }*/
-            public void onClick(View view) {
-                alarmNotification();
-            }
-        });
+//        alarm.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            /*public void onClick(View v) {
+//                NotificationManager notiMan = (NotificationManager) getActivity().getSystemService(NOTIFICATION_SERVICE);
+//                if (Build.VERSION.SDK_INT >= 26)
+//                {
+//                    notiMan.createNotificationChannel(new NotificationChannel("chnotl", "채널", NotificationManager.IMPORTANCE_DEFAULT));
+//                }
+//                notiMan.notify(1004, builder.build());
+//            }*/
+//            public void onClick(View view) {
+//                alarmNotification();
+//            }
+//        });
 
 
         return view;

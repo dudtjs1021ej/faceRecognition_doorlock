@@ -55,21 +55,19 @@
                 android:layout_height="wrap_content"
                 android:text="Tab3" />
         </com.google.android.material.tabs.TabLayout>
+
     </androidx.viewpager.widget.ViewPager>
 
-    <TextView
-        android:id="@+id/apptitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/dream7"
-        android:text="LockLock"
-        android:textColor="#FFFFFF"
-        android:textSize="25dp"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/toolbar"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.432" />
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="190dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/toolbar"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/toolbar"
+        app:srcCompat="@drawable/logo_locklock" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

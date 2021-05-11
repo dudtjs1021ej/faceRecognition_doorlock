@@ -40,7 +40,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
                 .load(arrayList.get(position).getprofile())
              //   .error(R.drawable.ic_launcher_background)
                 .into(holder.profile);
-        holder.time.setText(arrayList.get(position).getTime());
+        holder.time.setText(arrayList.get(position).getTime()+" 출입을 감지했습니다.");
 
     }
 
