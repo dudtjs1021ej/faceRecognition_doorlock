@@ -48,17 +48,17 @@ public class MyPage extends Activity {
         mpNickname = findViewById(R.id.mpNickname2);
         mpEmail = findViewById(R.id.mpEmail2);
         mpPwd = findViewById(R.id.mpPwd2);
-        iv = findViewById(R.id.iv);
+
         setBtn = findViewById(R.id.setBtn);
         deleteUser = findViewById(R.id.deleteUser);
-        editBtn = findViewById(R.id.editBtn);
+
 
         firebaseAuth = FirebaseAuth.getInstance();
 
         //유저가 로그인 하지 않은 상태라면 null 상태이고 이 액티비티를 종료하고 로그인 액티비티를 연다.
         if (firebaseAuth.getCurrentUser() == null) {
             finish();
-            startActivity(new Intent(MyPage.this, Login.class));
+            //startActivity(new Intent(MyPage.this, Login.class));
         }
 
         //유저가 있다면, null이 아니면 계속 진행
@@ -67,7 +67,7 @@ public class MyPage extends Activity {
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         DatabaseReference ref = db.getReference("Users");
 
-        iv.setImageResource(R.drawable.an);
+
 //        ref.addValueEventListener(new ValueEventListener() {
 //            @Override
 //            public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -169,13 +169,13 @@ public class MyPage extends Activity {
             }
         });
 
-        // 이미지 변경
-        editBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+    }
 
-            }
-        });
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        finish();
+        startActivity(new Intent(MyPage.this,MainActivity.class));
     }
 }
 

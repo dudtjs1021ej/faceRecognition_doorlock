@@ -23,6 +23,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ScrollView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -42,6 +43,7 @@ public class Fragment_cctv extends Fragment {
     ImageButton button;
     Button alarm;
     Boolean bAlarm;
+    ScrollView scrollView;
 
     //Boolean data_alarm=false;
     String imgUrl=null;
@@ -80,6 +82,9 @@ public class Fragment_cctv extends Fragment {
         button=view.findViewById(R.id.refreshButton3);
 
         recyclerView=view.findViewById(R.id.recyclerview);
+
+        scrollView=view.findViewById(R.id.scrollView2);
+        scrollView.fullScroll(ScrollView.FOCUS_DOWN);
 
         recyclerView.setHasFixedSize(true);
         layoutManager=new LinearLayoutManager(getActivity());

@@ -1,45 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
-    <ImageView
-        android:id="@+id/iv"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginStart="128dp"
-        android:layout_marginTop="72dp"
-        android:scaleType="fitCenter"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@drawable/gradient_shadywater"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/dream5"
+            android:text="마이페이지"
+            android:textColor="@color/white"
+            android:textSize="40dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:id="@+id/mpNickname"
         android:layout_width="100dp"
         android:layout_height="35dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="100dp"
         android:fontFamily="@font/dream5"
         android:text="Nickname"
         android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.051"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
 
     <TextView
         android:id="@+id/mpEmail"
         android:layout_width="wrap_content"
         android:layout_height="35dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="40dp"
         android:fontFamily="@font/dream5"
         android:text="Email"
         android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.15"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mpNickname" />
 
@@ -47,12 +58,11 @@
         android:id="@+id/mpPwd"
         android:layout_width="wrap_content"
         android:layout_height="35dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="40dp"
         android:fontFamily="@font/dream5"
         android:text="Password"
         android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mpEmail" />
 
@@ -60,38 +70,35 @@
         android:id="@+id/mpNickname2"
         android:layout_width="250dp"
         android:layout_height="35dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="100dp"
         android:fontFamily="@font/dream4"
         android:hint="Nickname"
         android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.788"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
 
     <TextView
         android:id="@+id/mpEmail2"
         android:layout_width="250dp"
         android:layout_height="35dp"
+        android:layout_marginStart="130dp"
         android:layout_marginTop="40dp"
         android:fontFamily="@font/dream4"
         android:hint="Email"
         android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.788"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mpNickname" />
 
     <EditText
         android:id="@+id/mpPwd2"
-        android:layout_width="180dp"
+        android:layout_width="160dp"
         android:layout_height="40dp"
+        android:layout_marginStart="130dp"
         android:layout_marginTop="32dp"
         android:fontFamily="@font/dream3"
         android:hint="Password"
         android:textSize="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.549"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mpEmail" />
 
@@ -100,12 +107,12 @@
         android:layout_width="72dp"
         android:layout_height="43dp"
         android:layout_marginTop="28dp"
-        android:backgroundTint="#74ebd5"
-        android:fontFamily="@font/dream5"
+        android:backgroundTint="@color/white"
+        android:fontFamily="@font/dream6"
+        android:stateListAnimator="@null"
         android:text="변경"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.25"
+        android:textColor="#676767"
+        android:textSize="20dp"
         app:layout_constraintStart_toEndOf="@+id/mpPwd2"
         app:layout_constraintTop_toBottomOf="@+id/mpEmail2" />
 
@@ -114,26 +121,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
-        android:backgroundTint="#74ebd5"
-        android:fontFamily="@font/dream5"
+        android:backgroundTint="@color/white"
+        android:fontFamily="@font/dream6"
+        android:stateListAnimator="@null"
         android:text="회원탈퇴"
-        android:textColor="@color/white"
+        android:textColor="#676767"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageButton
-        android:id="@+id/editBtn"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="176dp"
-        android:layout_marginEnd="76dp"
-        android:scaleType="fitCenter"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/iv"
-        app:layout_constraintTop_toTopOf="parent"/>
-       <!-- app:srcCompat="@drawable/edit"-->
+    <!-- app:srcCompat="@drawable/edit"-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

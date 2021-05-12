@@ -22,6 +22,7 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -61,6 +62,7 @@ public class Face extends AppCompatActivity {
     ImageButton btn_takepic=null;
     Button btn_choose=null;
     Button btn_load=null;
+    Button btn_cancel=null;
     EditText editText;
     private Uri filepath;
 
@@ -108,6 +110,7 @@ public class Face extends AppCompatActivity {
         //storage
         btn_choose = (Button) findViewById(R.id.bt_choose);
         btn_load = (Button) findViewById(R.id.bt_upload);
+        btn_cancel = (Button) findViewById(R.id.bt_cancel);
 
         btn_choose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,6 +126,20 @@ public class Face extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 uploadFile();
+            }
+        });
+
+        btn_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Intent intent = new Intent(Face.this, Fragment_FaceRecognition.class); //지금 액티비티에서 다른 액티비티로 이동하는 인텐트 설정
+//                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);    //인텐트 플래그 설정
+//                startActivity(intent);  //인텐트 이동
+//                finish();   //현재 액티비티 종료
+                finish();
+                startActivity(new Intent(Face.this,MainActivity.class));
+
+
             }
         });
         database=FirebaseDatabase.getInstance();
