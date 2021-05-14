@@ -11,7 +11,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.ImageDecoder;
+import android.graphics.Color;
 import android.graphics.Matrix;
 import android.media.ExifInterface;
 import android.net.Uri;
@@ -26,6 +26,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -64,6 +65,7 @@ public class Face extends AppCompatActivity {
     Button btn_load=null;
     Button btn_cancel=null;
     EditText editText;
+    TextView textView;
     private Uri filepath;
 
     DatabaseReference mRootRef=FirebaseDatabase.getInstance().getReference();
@@ -97,6 +99,7 @@ public class Face extends AppCompatActivity {
 
         //사진
         btn_takepic = (ImageButton)findViewById(R.id.take_picture);
+        textView = (TextView)findViewById(R.id.takePictureTextView);
         iv = (ImageView) findViewById(R.id.image);
         editText=(EditText)findViewById(R.id.edit_name);
         btn_takepic.setOnClickListener(new View.OnClickListener() {
@@ -125,6 +128,7 @@ public class Face extends AppCompatActivity {
         btn_load.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                textView.setVisibility(View.INVISIBLE);
                 uploadFile();
             }
         });
@@ -356,6 +360,7 @@ public class Face extends AppCompatActivity {
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filepath);
                 iv.setImageBitmap(bitmap);
+
             } catch (IOException e) {
                 e.printStackTrace();
             }

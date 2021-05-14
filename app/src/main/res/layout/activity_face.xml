@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/takePictureTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="사진을 찍어주세요"
@@ -48,10 +48,8 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toTopOf="parent">
 
 
         <Button
@@ -87,24 +85,27 @@
             android:id="@+id/textView4"
             android:layout_width="55dp"
             android:layout_height="36dp"
-            android:layout_marginTop="580dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="540dp"
             android:fontFamily="@font/dream6"
             android:text="이름"
             android:textAlignment="center"
-            android:textColor="#74ebd5"
+            android:textColor="#676767"
             android:textSize="23dp"
+            android:visibility="invisible"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/edit_name"
-            android:layout_width="wrap_content"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="140dp"
+            android:layout_marginBottom="144dp"
             android:ems="10"
             android:inputType="textPersonName"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.257"
             app:layout_constraintStart_toEndOf="@+id/textView4" />
 
         <Button
