@@ -12,18 +12,19 @@
         android:id="@+id/image"
         android:layout_width="316dp"
         android:layout_height="371dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="30dp"
         android:autofillHints="사진을 찍어주세요"
         android:background="@drawable/frame"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
 
     <TextView
         android:id="@+id/takePictureTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/dream3"
         android:text="사진을 찍어주세요"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/image"
@@ -42,30 +43,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout3"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+
+    <Button
+        android:id="@+id/bt_upload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="@color/white"
+        android:fontFamily="@font/dream6"
+        android:stateListAnimator="@null"
+        android:text="확인"
+        android:textColor="@color/black"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-
-        <Button
-            android:id="@+id/bt_upload"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginBottom="32dp"
-            android:backgroundTint="@color/white"
-            android:fontFamily="@font/dream6"
-            android:stateListAnimator="@null"
-            android:text="확인"
-            android:textColor="#676767"
-            android:textSize="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/bt_choose"
@@ -81,48 +73,74 @@
             app:layout_constraintHorizontal_bias="0.367"
             app:layout_constraintStart_toEndOf="@+id/bt_upload" />
 
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="55dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/dream6"
+        android:text="이름"
+        android:textAlignment="center"
+        android:textColor="#676767"
+        android:textSize="23dp"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/take_picture" />
+
+    <EditText
+        android:id="@+id/edit_name"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:fontFamily="@font/dream3"
+        android:hint="이름을 입력해주세요"
+        android:inputType="textPersonName"
+        android:selectAllOnFocus="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.257"
+        app:layout_constraintStart_toEndOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/take_picture" />
+
+    <Button
+        android:id="@+id/bt_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="@color/white"
+        android:fontFamily="@font/dream6"
+        android:stateListAnimator="@null"
+        android:text="취소"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@drawable/gradient_shadywater"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
         <TextView
-            android:id="@+id/textView4"
-            android:layout_width="55dp"
-            android:layout_height="36dp"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="540dp"
-            android:fontFamily="@font/dream6"
-            android:text="이름"
-            android:textAlignment="center"
-            android:textColor="#676767"
-            android:textSize="23dp"
-            android:visibility="invisible"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/edit_name"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="144dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.257"
-            app:layout_constraintStart_toEndOf="@+id/textView4" />
-
-        <Button
-            android:id="@+id/bt_cancel"
+            android:id="@+id/textView10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="50dp"
-            android:layout_marginBottom="32dp"
-            android:backgroundTint="@color/white"
-            android:fontFamily="@font/dream6"
-            android:stateListAnimator="@null"
-            android:text="취소"
-            android:textColor="#676767"
-            android:textSize="20dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/dream5"
+            android:text="사용자 등록"
+            android:textColor="@color/white"
+            android:textSize="25dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

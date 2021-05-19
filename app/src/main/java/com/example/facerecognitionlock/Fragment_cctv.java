@@ -43,7 +43,6 @@ public class Fragment_cctv extends Fragment {
     ImageButton button;
     Button alarm;
     Boolean bAlarm;
-    ScrollView scrollView;
 
     //Boolean data_alarm=false;
     String imgUrl=null;
@@ -83,8 +82,6 @@ public class Fragment_cctv extends Fragment {
 
         recyclerView=view.findViewById(R.id.recyclerview);
 
-        scrollView=view.findViewById(R.id.scrollView2);
-        scrollView.fullScroll(ScrollView.FOCUS_DOWN);
 
         recyclerView.setHasFixedSize(true);
         layoutManager=new LinearLayoutManager(getActivity());
@@ -222,6 +219,8 @@ public class Fragment_cctv extends Fragment {
 
         return view;
     }
+
+
 
     public void visitorList(){ //방문자 목록 불러오기
         database=FirebaseDatabase.getInstance(); //파이어베이스 데이터베이스 연동

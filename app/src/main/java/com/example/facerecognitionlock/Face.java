@@ -6,6 +6,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.FileProvider;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -97,6 +98,8 @@ public class Face extends AppCompatActivity {
             }
         }
 
+
+
         //사진
         btn_takepic = (ImageButton)findViewById(R.id.take_picture);
         textView = (TextView)findViewById(R.id.takePictureTextView);
@@ -106,6 +109,7 @@ public class Face extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 capture();
+                textView.setVisibility(View.GONE);
             }
         });
 
@@ -114,6 +118,9 @@ public class Face extends AppCompatActivity {
         btn_choose = (Button) findViewById(R.id.bt_choose);
         btn_load = (Button) findViewById(R.id.bt_upload);
         btn_cancel = (Button) findViewById(R.id.bt_cancel);
+
+
+
 
         btn_choose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,7 +135,6 @@ public class Face extends AppCompatActivity {
         btn_load.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                textView.setVisibility(View.INVISIBLE);
                 uploadFile();
             }
         });
@@ -251,7 +257,8 @@ public class Face extends AppCompatActivity {
         }else{
             Toast.makeText(getApplicationContext(),"파일을 먼저 선택하세요.",Toast.LENGTH_SHORT).show();
         }
-        editText.setText(" ");
+       // editText.setText(" ");
+
     }
     private int exifOrientationToDegress(int exifOrientation) {
         if (exifOrientation == ExifInterface.ORIENTATION_ROTATE_90) {
