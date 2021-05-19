@@ -30,8 +30,6 @@ public class MyPage extends Activity {
 
     TextView mpNickname, mpEmail;
     EditText mpPwd;
-    ImageView iv;
-    ImageButton editBtn;
     Button setBtn, deleteUser;
 
     String nickname, email, uid;

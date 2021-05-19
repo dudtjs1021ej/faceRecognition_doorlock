@@ -40,6 +40,9 @@
         <activity
             android:name=".MyPage"
             android:label="MyPage" />
+        <activity
+            android:name=".AppExplain"
+            android:label="AppExplain" />
         <activity android:name=".MainActivity">
             <!--<intent-filter>
                 <action android:name="android.intent.action.MAIN" />

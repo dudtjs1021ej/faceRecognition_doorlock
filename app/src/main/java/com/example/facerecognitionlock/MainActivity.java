@@ -94,7 +94,10 @@ public class MainActivity extends AppCompatActivity
                 finish();
                 break;
             case R.id.item2: // 앱 설명
-                Toast.makeText(this, "앱 설명", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "앱 설명", Toast.LENGTH_SHORT).show();
+                Intent intent2 = new Intent(this, AppExplain.class);
+                startActivity(intent2);
+                finish();
                 break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);
