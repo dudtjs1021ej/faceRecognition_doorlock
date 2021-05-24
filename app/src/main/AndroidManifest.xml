@@ -43,6 +43,9 @@
         <activity
             android:name=".AppExplain"
             android:label="AppExplain" />
+        <activity
+            android:name=".AuthActivity"
+            android:label="AuthActivity" />
         <activity android:name=".MainActivity">
             <!--<intent-filter>
                 <action android:name="android.intent.action.MAIN" />
