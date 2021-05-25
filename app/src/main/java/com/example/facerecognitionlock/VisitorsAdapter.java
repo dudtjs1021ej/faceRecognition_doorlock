@@ -12,16 +12,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
-public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomViewHolder>{
+public class VisitorsAdapter extends RecyclerView.Adapter<VisitorsAdapter.CustomViewHolder>{
 
     private ArrayList<Visitors> arrayList;
     private Context context;
 
-    public CustomAdapter(ArrayList<Visitors> arrayList, Context context) {
+    public VisitorsAdapter(ArrayList<Visitors> arrayList, Context context) {
         this.arrayList = arrayList;
         this.context = context;
     }

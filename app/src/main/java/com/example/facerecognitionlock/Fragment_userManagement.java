@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -30,7 +29,7 @@ import com.google.firebase.storage.StorageReference;
 import java.util.ArrayList;
 
 
-public class Fragment_FaceRecognition extends Fragment {
+public class Fragment_userManagement extends Fragment {
 
     ArrayList<String> imgURLs=new ArrayList<>();
     ImageButton button;
@@ -39,14 +38,14 @@ public class Fragment_FaceRecognition extends Fragment {
     Context thisContext;
     int i=-1;
 
-    public Fragment_FaceRecognition() {
+    public Fragment_userManagement() {
 
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        ViewGroup view = (ViewGroup) inflater.inflate(R.layout.fragment_face_recognition, container, false);
+        ViewGroup view = (ViewGroup) inflater.inflate(R.layout.fragment_user_management, container, false);
         thisContext = container.getContext();
         button = (ImageButton) view.findViewById(R.id.btn);
         refreshButton = (ImageButton) view.findViewById(R.id.refreshButton);
@@ -55,7 +54,7 @@ public class Fragment_FaceRecognition extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), Face.class);
+                Intent intent = new Intent(getActivity(), UserRegisterActivity.class);
                 startActivity(intent);
             }
         });

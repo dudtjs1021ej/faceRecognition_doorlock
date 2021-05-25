@@ -8,8 +8,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,7 +15,6 @@ import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -26,7 +23,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class MyPage extends Activity {
+public class MyPageActivity extends Activity {
 
     TextView mpNickname, mpEmail;
     EditText mpPwd;
@@ -121,10 +118,10 @@ public class MyPage extends Activity {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()){
-                                    Toast.makeText(MyPage.this, "비밀번호가 변경되었습니다.", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(MyPageActivity.this, "비밀번호가 변경되었습니다.", Toast.LENGTH_SHORT).show();
                                 }
                                 else {
-                                    Toast.makeText(MyPage.this, "비밀번호 변경에 실패했습니다.", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(MyPageActivity.this, "비밀번호 변경에 실패했습니다.", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
@@ -135,7 +132,7 @@ public class MyPage extends Activity {
         deleteUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(MyPage.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(MyPageActivity.this);
                 builder.setTitle("회원 탈퇴").setMessage("정말로 탈퇴하시겠습니까?");
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
@@ -146,10 +143,10 @@ public class MyPage extends Activity {
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()){
                                         ref.child(uid).setValue(null);
-                                        Toast.makeText(MyPage.this, "정상적으로 탈퇴되었습니다.", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(MyPageActivity.this, "정상적으로 탈퇴되었습니다.", Toast.LENGTH_SHORT).show();
                                     }
                                     else {
-                                        Toast.makeText(MyPage.this, "회원 탈퇴에 실패했습니다.", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(MyPageActivity.this, "회원 탈퇴에 실패했습니다.", Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });
@@ -158,7 +155,7 @@ public class MyPage extends Activity {
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(MyPage.this, "회원 탈퇴가 취소되었습니다.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MyPageActivity.this, "회원 탈퇴가 취소되었습니다.", Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -173,7 +170,7 @@ public class MyPage extends Activity {
     public void onBackPressed(){
         super.onBackPressed();
         finish();
-        startActivity(new Intent(MyPage.this,MainActivity.class));
+        startActivity(new Intent(MyPageActivity.this,MainActivity.class));
     }
 }
 

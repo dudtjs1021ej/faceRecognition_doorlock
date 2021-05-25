@@ -34,7 +34,7 @@
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/vpPager"
         android:layout_width="wrap_content"
-        android:layout_height="600dp"
+        android:layout_height="550dp"
         android:background="@color/white" />
 
     <me.relex.circleindicator.CircleIndicator

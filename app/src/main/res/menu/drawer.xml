@@ -3,12 +3,12 @@
 
     <item
         android:id="@+id/item1"
-        android:icon="@mipmap/background_foreground"
+        android:icon="@drawable/icon_mymage"
         android:title="마이페이지" />
 
     <item
         android:id="@+id/item2"
-        android:icon="@mipmap/background"
+        android:icon="@drawable/icon_explain"
         android:title="앱 설명"
         />
 

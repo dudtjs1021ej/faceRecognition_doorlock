@@ -3,7 +3,6 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -40,8 +39,8 @@ public class SplashActivity extends Activity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                //startActivity(new Intent(SplashActivity.this, MainActivity.class));
-                startActivity(new Intent(SplashActivity.this, Login.class));
+               // startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                startActivity(new Intent(SplashActivity.this, LoginActivity.class));
             }
 
             @Override

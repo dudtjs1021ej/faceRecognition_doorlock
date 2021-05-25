@@ -1,35 +1,24 @@
 package com.example.facerecognitionlock;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
-import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.util.ArrayList;
-
 
 
 public class MainActivity extends AppCompatActivity
@@ -69,18 +58,7 @@ public class MainActivity extends AppCompatActivity
 
         DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
         DatabaseReference conditionRef = mRootRef.child("door");
-        /*conditionRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                data_alarm=snapshot.getValue(Boolean.class);
-                System.out.println("data_alarm"+data_alarm);
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });*/
     }
 
 
@@ -88,14 +66,12 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()) {
             case R.id.item1: // 마이페이지
-                //Toast.makeText(this, "item1 clicked..", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(this, MyPage.class);
+                Intent intent = new Intent(this, MyPageActivity.class);
                 startActivity(intent);
                 finish();
                 break;
             case R.id.item2: // 앱 설명
-                //Toast.makeText(this, "앱 설명", Toast.LENGTH_SHORT).show();
-                Intent intent2 = new Intent(this, AppExplain.class);
+                Intent intent2 = new Intent(this, AppExplainActivity.class);
                 startActivity(intent2);
                 finish();
                 break;

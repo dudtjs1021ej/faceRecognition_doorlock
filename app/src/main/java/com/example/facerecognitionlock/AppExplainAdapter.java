@@ -22,10 +22,10 @@ public class AppExplainAdapter extends FragmentPagerAdapter {
         super(fm);
         items =new ArrayList<Fragment>();
 
-        items.add(new Fragment_App1());
-        items.add(new Fragment_App2());
-        items.add(new Fragment_App3());
-        items.add(new Fragment_App4());
+        items.add(new Fragment_appExplain1());
+        items.add(new Fragment_appExplain2());
+        items.add(new Fragment_appExplain3());
+        items.add(new Fragment_appExplain4());
 
 
         itext.add("도어락 제어");

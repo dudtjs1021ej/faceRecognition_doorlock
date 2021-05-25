@@ -8,19 +8,19 @@ import android.widget.ImageView;
 
 import androidx.fragment.app.Fragment;
 
-public class Fragment_App1 extends Fragment {
-    ImageView iv1;
+public class Fragment_appExplain3 extends Fragment {
+    ImageView iv3;
 
-    public Fragment_App1(){
+    public Fragment_appExplain3(){
 
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.fragment_app1, container, false);
+        View view=inflater.inflate(R.layout.fragment_app_explain3, container, false);
 
-        iv1 = (ImageView) view.findViewById(R.id.imageView1);
-        iv1.setImageResource(R.drawable.a1);
+        iv3 = (ImageView) view.findViewById(R.id.imageView3);
+        iv3.setImageResource(R.drawable.a3);
 
         return view;
     }

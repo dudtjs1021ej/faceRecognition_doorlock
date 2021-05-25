@@ -23,8 +23,8 @@ public class VAdapter extends FragmentPagerAdapter {
         items =new ArrayList<Fragment>();
 
         items.add(new Fragment_Lock());
-        items.add(new Fragment_FaceRecognition());
-        items.add(new Fragment_cctv());
+        items.add(new Fragment_userManagement());
+        items.add(new Fragment_visitors());
 
 
         itext.add("도어락 제어");

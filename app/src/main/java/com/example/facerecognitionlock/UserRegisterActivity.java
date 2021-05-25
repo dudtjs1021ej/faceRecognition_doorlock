@@ -6,13 +6,11 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.FileProvider;
 
 import android.Manifest;
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.graphics.Matrix;
 import android.media.ExifInterface;
 import android.net.Uri;
@@ -52,7 +50,7 @@ import java.util.Locale;
 
 import static android.os.Environment.DIRECTORY_PICTURES;
 
-public class Face extends AppCompatActivity {
+public class UserRegisterActivity extends AppCompatActivity {
 
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
@@ -81,7 +79,7 @@ public class Face extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_face);
+        setContentView(R.layout.activity_user_register);
 
         mMediaScanner=MediaScanner.getInstance(getApplicationContext());
 
@@ -93,7 +91,7 @@ public class Face extends AppCompatActivity {
                 Log.d(TAG, "권한 설정 완료");
             } else {
                 Log.d(TAG, "권한 설정 요청");
-                ActivityCompat.requestPermissions(Face.this, new String[]
+                ActivityCompat.requestPermissions(UserRegisterActivity.this, new String[]
                         {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
             }
         }
@@ -147,7 +145,7 @@ public class Face extends AppCompatActivity {
 //                startActivity(intent);  //인텐트 이동
 //                finish();   //현재 액티비티 종료
                 finish();
-                startActivity(new Intent(Face.this,MainActivity.class));
+                startActivity(new Intent(UserRegisterActivity.this,MainActivity.class));
 
 
             }

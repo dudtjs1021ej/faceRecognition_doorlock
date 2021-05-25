@@ -8,7 +8,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -75,7 +74,7 @@ public class RegisterActivity extends AppCompatActivity {
                                     ref.child(uid).setValue(hashMap);
 
                                     //가입이 이루어져을시 가입 화면을 빠져나감.
-                                    Intent intent = new Intent(RegisterActivity.this, Login.class);
+                                    Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                                     startActivity(intent);
                                     finish();
                                     Toast.makeText(RegisterActivity.this, "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show();

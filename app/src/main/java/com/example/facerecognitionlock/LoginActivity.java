@@ -15,7 +15,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class Login extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     Button mLoginBtn;
     Button mRegisterBtn;
     EditText mEmailText, mPwdText;
@@ -37,7 +37,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //startActivity(new Intent(Login.this, RegisterActivity.class));
-                startActivity(new Intent(Login.this, AuthActivity.class));
+                startActivity(new Intent(LoginActivity.this, AuthActivity.class));
             }
         });
 
@@ -47,14 +47,14 @@ public class Login extends AppCompatActivity {
                 String email = mEmailText.getText().toString().trim();
                 String pwd = mPwdText.getText().toString().trim();
                 firebaseAuth.signInWithEmailAndPassword(email, pwd)
-                        .addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
+                        .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if(task.isSuccessful()) {
-                                    Intent intent = new Intent(Login.this, MainActivity.class);
+                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                     startActivity(intent);
                                 } else {
-                                    Toast.makeText(Login.this, "이메일 혹은 비밀번호를 다시 확인해 주세요.", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(LoginActivity.this, "이메일 혹은 비밀번호를 다시 확인해 주세요.", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });

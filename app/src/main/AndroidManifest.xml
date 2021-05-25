@@ -30,7 +30,7 @@
         </activity>
 
         <activity
-            android:name=".Login"
+            android:name=".LoginActivity"
             android:label="@string/app_name">
 
         </activity>
@@ -38,10 +38,10 @@
             android:name=".RegisterActivity"
             android:label="Create Account" />
         <activity
-            android:name=".MyPage"
+            android:name=".MyPageActivity"
             android:label="MyPage" />
         <activity
-            android:name=".AppExplain"
+            android:name=".AppExplainActivity"
             android:label="AppExplain" />
         <activity
             android:name=".AuthActivity"
@@ -53,7 +53,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>-->
         </activity>
-        <activity android:name=".Face"/>
+        <activity android:name=".UserRegisterActivity"
+            android:windowSoftInputMode="adjustUnspecified|adjustPan"/>
 
         <provider
             android:name="androidx.core.content.FileProvider"

@@ -9,7 +9,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import me.relex.circleindicator.CircleIndicator;
 
-public class AppExplain extends AppCompatActivity {
+public class AppExplainActivity extends AppCompatActivity {
     FragmentPagerAdapter adapterViewPager;
 
     @Override
@@ -28,6 +28,6 @@ public class AppExplain extends AppCompatActivity {
     public void onBackPressed(){
         super.onBackPressed();
         finish();
-        startActivity(new Intent(AppExplain.this, MainActivity.class));
+        startActivity(new Intent(AppExplainActivity.this, MainActivity.class));
     }
 }
