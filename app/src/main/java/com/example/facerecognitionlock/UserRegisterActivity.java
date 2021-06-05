@@ -55,7 +55,6 @@ public class UserRegisterActivity extends AppCompatActivity {
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
 
-    //String mCurrentPhotoPath;
     final static int REQUEST_TAKE_PHOTO=10;
 
     ImageView iv=null;
@@ -74,7 +73,6 @@ public class UserRegisterActivity extends AppCompatActivity {
 
     private MediaScanner mMediaScanner;
     private String imageFilePath;
-    //private Uri photoUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,9 +94,6 @@ public class UserRegisterActivity extends AppCompatActivity {
             }
         }
 
-
-
-        //사진
         btn_takepic = (ImageButton)findViewById(R.id.take_picture);
         textView = (TextView)findViewById(R.id.takePictureTextView);
         iv = (ImageView) findViewById(R.id.image);
@@ -111,8 +106,6 @@ public class UserRegisterActivity extends AppCompatActivity {
             }
         });
 
-
-        //storage
         btn_choose = (Button) findViewById(R.id.bt_choose);
         btn_load = (Button) findViewById(R.id.bt_upload);
         btn_cancel = (Button) findViewById(R.id.bt_cancel);
@@ -140,14 +133,8 @@ public class UserRegisterActivity extends AppCompatActivity {
         btn_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(Face.this, Fragment_FaceRecognition.class); //지금 액티비티에서 다른 액티비티로 이동하는 인텐트 설정
-//                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);    //인텐트 플래그 설정
-//                startActivity(intent);  //인텐트 이동
-//                finish();   //현재 액티비티 종료
                 finish();
                 startActivity(new Intent(UserRegisterActivity.this,MainActivity.class));
-
-
             }
         });
         database=FirebaseDatabase.getInstance();
@@ -190,7 +177,6 @@ public class UserRegisterActivity extends AppCompatActivity {
 
         File storageDir=getExternalFilesDir(Environment.DIRECTORY_PICTURES);
         File image=File.createTempFile(imageFileName, ".jpg", storageDir);
-        //mCurrentPhotoPath=image.getAbsolutePath();
         imageFilePath=image.getAbsolutePath();
         return image;
     }
@@ -255,9 +241,8 @@ public class UserRegisterActivity extends AppCompatActivity {
         }else{
             Toast.makeText(getApplicationContext(),"파일을 먼저 선택하세요.",Toast.LENGTH_SHORT).show();
         }
-       // editText.setText(" ");
-
     }
+
     private int exifOrientationToDegress(int exifOrientation) {
         if (exifOrientation == ExifInterface.ORIENTATION_ROTATE_90) {
             return 90;
@@ -290,7 +275,6 @@ public class UserRegisterActivity extends AppCompatActivity {
         if (requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK) {
             Bitmap bitmap = BitmapFactory.decodeFile(imageFilePath);
             ExifInterface exif = null;
-
             try {
                 exif = new ExifInterface(imageFilePath);
             } catch (IOException e) {
@@ -338,7 +322,6 @@ public class UserRegisterActivity extends AppCompatActivity {
 
             // 비트맵 사진 폴더 경로에 저장
             rotate(bitmap,exifDegree).compress(Bitmap.CompressFormat.JPEG,70, fOut);
-            //bitmap.compress(Bitmap.CompressFormat.JPEG,70, fOut);
 
             try {
                 fOut.flush();
@@ -354,7 +337,6 @@ public class UserRegisterActivity extends AppCompatActivity {
                 result = "File close Error";
             }
             iv.setImageBitmap(rotate(bitmap,exifDegree));
-            //iv.setImageBitmap(bitmap);
         }
 
 

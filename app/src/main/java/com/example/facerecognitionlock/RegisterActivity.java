@@ -31,12 +31,6 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        /*ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Create Account");
-
-        actionBar.setDisplayHomeAsUpEnabled(true); //뒤로가기버튼
-        actionBar.setDisplayShowHomeEnabled(true); //홈 아이콘*/
-
         // firebase access
         firebaseAuth = FirebaseAuth.getInstance();
 
