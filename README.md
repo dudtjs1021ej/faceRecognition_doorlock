@@ -7,6 +7,8 @@
 
 
 ### 프로젝트 설명
+![image](https://user-images.githubusercontent.com/77915491/120919015-61cad480-c6f2-11eb-9857-649c1962a12c.png)
+
 
 개발목표를 간단하게
 
@@ -23,12 +25,16 @@
     
 
 - 앱 설명
-
+     -  도어락 제어
+     -  사용자 등록 & 목록
+     -  출입 기록
 
 
 ### 하드웨어 모습
+![image](https://user-images.githubusercontent.com/77915491/120919068-aa828d80-c6f2-11eb-804a-cc888a084983.png)
+![image](https://user-images.githubusercontent.com/77915491/120919040-87f07480-c6f2-11eb-84b3-b7d062319549.png)
 
-도어락 내, 외부
+
 
 
 
