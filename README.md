@@ -7,40 +7,40 @@
 
 
 ### 프로젝트 설명
-![image](https://user-images.githubusercontent.com/77915491/120919015-61cad480-c6f2-11eb-9857-649c1962a12c.png)
+![image](https://user-images.githubusercontent.com/77915491/120919015-61cad480-c6f2-11eb-9857-649c1962a12c.png)  
 
 
 개발목표를 간단하게
 
 
 
-### 실행 방법
+### 실행 방법  
 
-- 사용자 등록
-![image](https://user-images.githubusercontent.com/77915491/120920349-4911ed00-c6f9-11eb-96a9-01e09baa7360.png)
+- __사용자 등록__    
+![image](https://user-images.githubusercontent.com/77915491/120920426-ac9c1a80-c6f9-11eb-8fe4-ad900fc4d668.png)  
 설명
     
 
-- 실시간 얼굴 인식
-![open](https://user-images.githubusercontent.com/77915491/120920298-0c45f600-c6f9-11eb-8808-9ed42312314a.GIF)
+- __실시간 얼굴 인식__  
+![open](https://user-images.githubusercontent.com/77915491/120920298-0c45f600-c6f9-11eb-8808-9ed42312314a.GIF)  
 설명 (눈깜빡임도)
 
-- 앱 설명
-     -  도어락 제어
-     ![IMG_xjzjwe](https://user-images.githubusercontent.com/77915491/120920323-24b61080-c6f9-11eb-88f7-0cb92cd39396.gif)
-     설명
-     
-     
+- 앱 설명  
+     -  __도어락 제어__  
+    ![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/77915491/120920637-c12ce280-c6fa-11eb-9e5d-4d701e66428f.gif)
 
-     -  사용자 등록 & 목록
-     ![image](https://user-images.githubusercontent.com/77915491/120920380-68a91580-c6f9-11eb-8101-35f97541df84.png)
-     설명
+     설명  
+
+     -  __사용자 등록 & 목록__  
+     ![image](https://user-images.githubusercontent.com/77915491/120920380-68a91580-c6f9-11eb-8101-35f97541df84.png)  
+     설명  
      
      
   
-     -  출입 기록
-     ![visitor](https://user-images.githubusercontent.com/77915491/120920289-03edbb00-c6f9-11eb-91e8-6f73c52d30dd.GIF)
-     설명
+     -  __출입 기록__  
+     ![ezgif com-gif-maker](https://user-images.githubusercontent.com/77915491/120920593-80cd6480-c6fa-11eb-8f71-94a6cd063fb1.gif)
+  
+     설명  
 
 
 
