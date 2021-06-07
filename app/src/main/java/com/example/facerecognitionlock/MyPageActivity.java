@@ -30,7 +30,6 @@ public class MyPageActivity extends Activity {
     Button setBtn, deleteUser;
 
     String nickname, email, uid;
-    //String pwd=null;
     private FirebaseAuth firebaseAuth;
     private FirebaseUser firebaseUser;
 
@@ -53,7 +52,6 @@ public class MyPageActivity extends Activity {
         //유저가 로그인 하지 않은 상태라면 null 상태이고 이 액티비티를 종료하고 로그인 액티비티를 연다.
         if (firebaseAuth.getCurrentUser() == null) {
             finish();
-            //startActivity(new Intent(MyPage.this, Login.class));
         }
 
         //유저가 있다면, null이 아니면 계속 진행
@@ -62,29 +60,14 @@ public class MyPageActivity extends Activity {
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         DatabaseReference ref = db.getReference("Users");
 
-
-//        ref.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                uid=snapshot.getValue(String.class);
-//                System.out.println("uidddddddd"+uid);
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-        //uid = "uWPz7kqWZOUIrcWzLaEQ9LntDcp1";
         uid = firebaseUser.getUid();
-        System.out.println("uidddddddd" + uid);
 
+        // 사용자 이메일 받아오기
         ref.child(uid).child("email").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 email = snapshot.getValue(String.class);
                 mpEmail.setText(email);
-                System.out.println("eeeeeeeeeeemail" + email);
             }
 
             @Override
@@ -93,12 +76,12 @@ public class MyPageActivity extends Activity {
             }
         });
 
+        // 사용자 닉네임 받아오기
         ref.child(uid).child("nickname").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 nickname = snapshot.getValue(String.class);
                 mpNickname.setText(nickname);
-                System.out.println("nicknameeeeeee" + nickname);
             }
 
             @Override
@@ -112,7 +95,6 @@ public class MyPageActivity extends Activity {
             @Override
             public void onClick(View v) {
                 String pwd = mpPwd.getText().toString().trim();
-                System.out.println("pwddddddd" + pwd + pwd.getClass().getName());
                 firebaseUser.updatePassword(pwd)
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
