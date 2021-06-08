@@ -1,15 +1,11 @@
 import firebase_admin
 import pyrebase
-#from firebase_admin import credentials,db
 from firebase_admin import credentials
 from firebase_admin import db
 from firebase_admin import firestore
 from firebase_admin import storage
-
 from datetime import datetime
-
 from uuid import uuid4
-
 
 PROJECT_ID="fir-connjava"
 cred = credentials.Certificate("fir-connjava-firebase-adminsdk-qnktd-8f492c5c5a.json")
@@ -17,6 +13,7 @@ default_app = firebase_admin.initialize_app(cred, {
     'storageBucket': 'fir-connjava.appspot.com',
     'databaseURL':'https://fir-connjava-default-rtdb.firebaseio.com/'
 })
+
 config ={
         "apiKey":"AIzaSyDSG9bwd3FFvjfTodwoW38awyEva729LCc",
         "authDomain":"fir-connjava.firebaseapp.com",
@@ -32,7 +29,6 @@ bucket=storage.bucket('fir-connjava.appspot.com')
 def  getDoorAccess():
     ref_doorAccess=db.reference('doorAccess')
     doorAccess=ref_doorAccess.get()
-    print("getDorrAccess="+str(doorAccess))
     return str(doorAccess)
 
 def uploadDoorAccess(x):
@@ -57,7 +53,7 @@ def uploadVisitor():
     path='visitors/visitor'+str(visitorsNum)+'.jpg'
     metadata=bucket.get_blob(path).metadata #token
     for value in metadata.values():
-        print(value)
+        
         token=value
 
     imgUrl=storage2.child("visitors/visitor"+str(visitorsNum)+".jpg").get_url(token)
@@ -68,7 +64,7 @@ def uploadVisitor():
         'profile':imgUrl
         #'name':name
     })
-    print("a="+str(a))
+    
     ref_num.update({'visitorsNum':visitorsNum})
     return True
     
@@ -81,7 +77,6 @@ def uploadImage():
     metadata = {"firebaseStorageDownloadTokens": new_token}
     blob.metadata = metadata
     blob.upload_from_filename("visitors/visitor"+str(visitorNum)+".jpg")
-    print(blob.public_url)
     
 def uploadAlarm(x):
     ref=db.reference()
@@ -98,5 +93,3 @@ def detectValue_update():
         ref_detectValue.update({'detect_value':'True'})
         detectValue=ref_detectValue.get()
         return detectValue
-
-
