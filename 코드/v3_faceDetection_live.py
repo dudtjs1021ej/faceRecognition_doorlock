@@ -12,7 +12,7 @@ from math import hypot
 
 import time
 
-import face_doorlock
+import face_doorlock_test
 
 def midpoint(p1, p2):
     
@@ -48,16 +48,16 @@ def main():
 
     r_eye_points = [42, 43, 44, 45, 46, 47]
 
-    l_eye_poits = [36, 37, 38, 39, 40, 41]
-
-    count_blinking = 0
+    l_eye_poits = [36, 37, 38, 39, 40, 41]    
 
     stream_cap = cv2.VideoCapture(0)
-
-    print(faceDescs_list)
+    
     cnt=0
+    not_found=0
 
     while True:
+        count_blinking = 0
+        
         detect_value = firebase_value2.get_detectValue()
         
         ret, img_bgr = stream_cap.read()
@@ -73,12 +73,11 @@ def main():
         faces = detector(img_rgb, 1)
         
         if faces:
-            if (cnt%20)==0:
+            print('얼굴을 감지중입니다.')
+            if (cnt%10)==0:
                 firebase_value2.uploadDoorAccess(True)
-            print(cnt)
             cnt+=1
             doorAccess=firebase_value2.getDoorAccess()
-            print("v2="+doorAccess)
             if doorAccess == "True" :
                 visitorsNum=firebase_value2.getVisitorsNum()
                 cv2.imwrite("visitors/visitor"+str(visitorsNum+1) +".jpg", img_bgr)
@@ -86,6 +85,13 @@ def main():
                 if firebase_value2.uploadVisitor()==True:
                     firebase_value2.uploadAlarm(True)
                     firebase_value2.uploadDoorAccess(False)
+        else:
+            #print("face not found")
+            not_found+=1
+            if(not_found == 10):
+                detect_value = False
+                detect_value = firebase_value2.detectValue_update()
+                break
 
         last_found = {'name': 'unknown', 'dist': 0.4, 'color': (0,0,255)}
 
@@ -102,13 +108,10 @@ def main():
             face_descriptor = face_recog.compute_face_descriptor(img_rgb, landmarks)
 
             blinking_ratio = (left_eye_ratio + right_eye_ratio) / 2
-            
-            print("Blinking: " + str(count_blinking))
-            
+                     
             if blinking_ratio >= 5.0:
 
                 count_blinking += 1
-                print("Blinking: " + str(count_blinking))
             
             for i in range(len(faceDescs_list)):
                 descs = np.load('faceDescs/' + faceDescs_list[i], allow_pickle=True)[()]
@@ -117,26 +120,23 @@ def main():
 
                     dist = np.linalg.norm([face_descriptor] - saved_desc, axis=1)#유클리디안 거리계산
                     
-                    if dist >= 0.38:
+                    if dist >= 0.4:
                         last_found = {'name': name, 'dist': dist, 'color': (255,255,255)}
                         
-                    if dist < 0.38:
+                    if dist < 0.4:
                         if(count_blinking >= 1):
-                            face_doorlock.main()
+                            print("등록된 사용자입니다.")
+                            face_doorlock_test.main()
                             last_found = {'name': name, 'dist': dist, 'color': (255,255,255)}
                             cv2.rectangle(img_bgr, pt1=(d.left(), d.top()), pt2=(d.right(), d.bottom()), color=last_found['color'], thickness=2)
                             cv2.putText(img_bgr, last_found['name'], org=(d.left(), d.top()), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=1, color=last_found['color'], thickness=2)
                             detect_value = False
-                print(last_found['dist'])
-        cv2.imshow('img', img_bgr)
         
         if(detect_value == False):
             detect_value = firebase_value2.detectValue_update()
-            break
-        #if cv2.waitKey(1) == ord('q'):
+            time.sleep(5)
+            return
 
-           #break
-        
     stream_cap.release()
-
+    
     cv2.destroyAllWindows()
