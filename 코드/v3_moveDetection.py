@@ -4,28 +4,22 @@ import sys
 import signal
 import v3_faceDetection_live_test
 
-#GPIO 핀
-TRIG = 23 # 트리거
-ECHO = 24 # 에코
+TRIG = 23
+ECHO = 24
 
-#거리 타임 아웃 용
 MAX_DISTANCE_CM = 300
 MAX_DURATION_TIMEOUT = (MAX_DISTANCE_CM * 2 * 29) #17460 # 17460us = 300cm
 
-# 키보드 CTRL + C 누르면 종료 되게 처리
 def signal_handler(signal, frame):
         print('프로그램을 종료합니다.')
         GPIO.cleanup()
         sys.exit(0)
 signal.signal(signal.SIGINT, signal_handler)
 
-# cm 환산 함수
 def distanceInCm(duration):
 
     return (duration/2)/29
 
-
-# 거리 표시
 def print_distance(distance):
     if distance == 0:
         distanceMsg = 'Distance : out of range\r'
@@ -33,7 +27,6 @@ def print_distance(distance):
         distanceMsg = 'Distance : ' + str(distance) + '\r'
     sys.stdout.write(distanceMsg)
     sys.stdout.flush()
-
 
 def main():
     GPIO.setwarnings(False)
