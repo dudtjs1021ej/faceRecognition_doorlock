@@ -6,27 +6,50 @@ import RPi.GPIO as GPIO
 
 from datetime import datetime
 
-def main():
-    lock =17
-    GPIO.setwarnings(False)
+import firebase_admin
 
-    GPIO.setmode(GPIO.BCM)
+from firebase_admin import credentials,db
 
-    GPIO.setup(lock, GPIO.OUT)
+cred = credentials.Certificate("fir-connjava-firebase-adminsdk-qnktd-8f492c5c5a.json")
 
-    print("open")
-    GPIO.output(lock, GPIO.HIGH)
-    time.sleep(1)
-    GPIO.output(lock,GPIO.LOW)
-    time.sleep(2)
+default_app = firebase_admin.initialize_app(cred, {
+    'storageBucket': 'fir-connjava.appspot.com',
 
-    time.sleep(3)
+    'databaseURL':'https://fir-connjava-default-rtdb.firebaseio.com/'
+})
 
-    print("close")
-    GPIO.output(lock, GPIO.HIGH)
-    time.sleep(1)
-    GPIO.output(lock,GPIO.LOW)
-    time.sleep(1)
-    # time.sleep(3)
-    #GPIO.output(lock, GPIO.LOW)
-    GPIO.cleanup()
+ref_door=db.reference('door')
+
+ref=db.reference()
+
+# open_door()
+
+lock =17
+
+GPIO.setwarnings(False)
+
+GPIO.setmode(GPIO.BCM)
+
+GPIO.setup(lock, GPIO.OUT)
+
+while True:
+
+    door=ref_door.get()
+
+    if door=="open" or door=="close":
+
+        print('문이 열렸습니다.')
+
+        GPIO.output(lock, GPIO.HIGH)
+
+        time.sleep(1)
+
+        GPIO.output(lock, GPIO.LOW)
+
+        time.sleep(1)
+
+        ref.update({'door':'wait'})
+
+GPIO.cleanup()
+
+
