@@ -1,17 +1,10 @@
 import firebase_value2
-
 import dlib
-
 import cv2
-
 import numpy as np
-
 import os
-
 from math import hypot
-
 import time
-
 import face_doorlock_test
 
 def midpoint(p1, p2):
