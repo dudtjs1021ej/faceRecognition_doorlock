@@ -1,7 +1,5 @@
 import firebase_admin
-
 from firebase_admin import credentials,db
-
 from firebase_admin import firestore
 from firebase_admin import storage
 
@@ -41,7 +39,7 @@ def startValue_update():
 
 def get_Image():
 	bucket=storage.bucket()
-	blob=bucket.blob("images/"+get_name()+"1.jpg")
+	blob=bucket.blob("images/"+ get_name() +"1.jpg")
 	blob.download_to_filename("OriginData/"+get_name()+"1.jpg")
 
 def get_detectValue():
