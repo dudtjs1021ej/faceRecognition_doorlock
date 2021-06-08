@@ -47,8 +47,8 @@ def encode_faces(image, lands):
 
 while(True):
     start_value = firebase_value.get_startValue()
-    print(start_value)
     if(start_value == 'True'):
+        print("얼굴데이터 등록 중 입니다....")
         firebase_value.get_Image()
         detector = dlib.get_frontal_face_detector()
 
@@ -57,7 +57,7 @@ while(True):
         face_recog = dlib.face_recognition_model_v1("dlib_face_recognition_resnet_model_v1.dat")
 
         userName=firebase_value.get_name()
-        print(userName)
+        print("사용자이름 : " + userName)
 
         face_aligner = openface.AlignDlib("shape_predictor_68_face_landmarks.dat")
 
@@ -87,7 +87,7 @@ while(True):
                 _, img_lands, _ = find_faces(img_rgb)
                 #userName에 인코딩값을 넣기
                 descs[userName] = encode_faces(img_rgb, img_lands)
-                print(descs[userName])
+                print("얼굴등록이 완료되었습니다.")
         #인코딩파일 저장
         np.save('faceDescs/' + userName + '.npy', descs)
         start_value = firebase_value.startValue_update()
