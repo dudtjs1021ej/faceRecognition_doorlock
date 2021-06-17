@@ -20,15 +20,11 @@ def get_door():
 	ref_door=db.reference()
 	door=ref_door.get()
 	ref_door.update({'door':'haha'})
-	#print(ref.get())
 	return door
 
 def get_startValue():
 	ref_startValue=db.reference('start_value')
 	startValue=ref_startValue.get()
-	#print(startValue)
-	#ref_value.update({'start_value':'False'})
-	#print(value)
 	return startValue
 
 def startValue_update():
